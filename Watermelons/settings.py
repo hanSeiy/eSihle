@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-^)kj4ofx6)6=-(a9nin@21l#-00vameg_-(x3s&b_57v(9fjf@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['esihlewatermelons.herokuapp.com']
 
 
 # Application definition
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'Watermelons.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dc808oe9dhjbjd',
+        'USER': 'urrvwpjiwzhmjm',
+        'PASSWORD': 'ea0b89e113a3600cfd0d6fb9ea1a3acaea07d8232f3af8357c7f871acc20bb71',
+        'HOST': 'ec2-34-205-14-168.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 db_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
