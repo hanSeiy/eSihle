@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>eSihle WaterMelons</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'css/melon_style.css' %}">
+<!--
+https://www.tooplate.com/view/2119-gymso-fitness
+-->
+</head>
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
+
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+            <img src="{% static 'logo.png' %}"  width="80px" height="75px" alt="LOGO">
+            eSihle WaterMelons
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link smoothScroll">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="social-icon ml-lg-3">
+                    <li><a href="https://www.facebook.com/given.sihle.9" class="fa fa-facebook"></a></li>
+                    <li><a href="https://www.instagram.com/hansiey_dev/" class="fa fa-instagram"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+     <!-- HERO -->
+     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+
+            <div class="bg-overlay"></div>
+
+               <div class="container">
+                    <div class="row">
+
+                         <div class="col-lg-8 col-md-10 mx-auto col-12">
+                              <div class="hero-text mt-5 text-center">
+
+                                    <h6 data-aos="fade-up" data-aos-delay="300">what's summer without the freshest watermelons in the market!</h6>
+
+                                    <h1 class="text-white" data-aos="fade-up" data-aos-delay="500"><span style="color:#EF394A">ke Summer Boss !!</span></h1>
+
+                                    <a href="#contact" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">order now</a>
+                                   
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+     </section>
+     <!-- ABOUT -->
+     <section class="about section" id="about">
+               <div class="container">
+                    <div class="row">
+
+                            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">It's that season</h2>
+
+                                <p data-aos="fade-up" data-aos-delay="400">In this weather at this time of the year nothing is more refreshing than a juicy watermelon to brighten your day while keeping you hydrated</p>
+
+                                <p data-aos="fade-up" data-aos-delay="500">We have the freshest and most delicious watermelons straight from the market and into your hands for you to explore possiblities or enjoy it as it is. We sale each melon for R65 to R75. Online orders come with free local delivery so get yours TODAY.</p>
+
+                            </div>
+                            <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
+                                <div class="team-thumb">
+                                    <img src="{% static 'cocM.jpg' %}" class="img-fluid" alt="Trainer">
+                                </div>
+                            </div>
+
+                    </div>
+               </div>
+     </section>
+     <!-- CONTACT -->
+     <section class="contact section" id="contact">
+          <div class="container">
+               <div class="row">
+
+                    <div class="ml-auto col-lg-5 col-md-6 col-12">
+                        <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Order Online</h2>
+                        {% for message in messages %}
+                        <h4 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200" style="color:red;">{{message}}</h4>
+                        {% endfor %}
+                        <form  action='/' method="POST" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+                            {% csrf_token %}
+                            {{order_form.name}}
+                            {{order_form.surname}}
+                            {{order_form.address}}
+                            {{order_form.contact}}
+                            {{order_form.quantity}}
+                            <button type="submit" class="form-control" id="submit-button" name="submit">Send Order</button>
+                        </form>
+                    </div>
+
+                    <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                        <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
+
+                        <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> 192 Khuthala street Section C KwaMhlanga</p>
+<!-- How to change your own map point
+	1. Go to Google Maps
+	2. Click on your location point
+	3. Click "Share" and choose "Embed map" tab
+	4. Copy only URL and paste it within the src="" field below
+-->
+                        <div class="google-map" data-aos="fade-up" data-aos-delay="900">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3082.7064495036716!2d28.696836314664747!3d-25.420572038744872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec00848649d5c25%3A0x7bbe3c526ba14e69!2sKwamahlanga-B%2C%20KwaMhlanga%2C%201022!5e1!3m2!1sen!2sza!4v1631142705332!5m2!1sen!2sza" width="1920" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+
+     <!-- FOOTER -->
+     <footer class="site-footer">
+          <div class="container">
+               <div class="row">
+
+                    <div class="ml-auto col-lg-4 col-md-5">
+                        <p class="copyright-text">Copyright &copy; 2021 eSihle Agrienterprise and projects (pty) Ltd
+                    </div>
+
+                    <div class="d-flex justify-content-center mx-auto col-lg-7 col-md-7 col-12">
+                        <p class="mr-4">
+                            <i class="fa fa-envelope-o mr-1"></i>
+                            <a href="#">sphiwesihlegiven330@gmail.com</a>
+                        </p>
+
+                        <p><i class="fa fa-phone mr-1"></i>082 891 6303 / 0712514225</p>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+          <div class="modal-footer"></div>
+
+        </div>
+      </div>
+    </div>
+
+     <!-- SCRIPTS -->
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/aos.js' %}"></script>
+     <script src="{% static 'js/smoothscroll.js' %}"></script>
+     <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

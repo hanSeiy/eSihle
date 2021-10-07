@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>eSihle | Invoice</title>
+    <link rel="stylesheet" href="{% static 'css/Invoice_style.css' %}" media="all" />
+  </head>
+  <body>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="{% static 'logo.png' %}">
+      </div>
+      <div id="company">
+        <h2 class="name">eSihle Agrienterprise and Projets (pty)Ltd</h2>
+        <div>192 khuthala street Section C Kwamhlanga</div>
+        <div>082 891 6303</div>
+        <div><a href="sphiwesihlegiven330@gmail.com">sphiwesihlegiven330@gmail.com</a></div>
+      </div>
+      </div>
+    </header>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">INVOICE TO:</div>
+          <h2 class="name">{{orders.name}} {{orders.surname}}</h2>
+          <div class="address">{{orders.address}}</div>
+        </div>
+        <div id="invoice">
+          <h1>INVOICE {{orders.id}}</h1>
+          <div class="date">Date of Invoice: {{orders.order_date}}</div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="no">#</th>
+            <th class="desc">DESCRIPTION</th>
+            <th class="unit">UNIT PRICE</th>
+            <th class="qty">QUANTITY</th>
+            <th class="total">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no">01</td>
+            <td class="desc"><h3>Watermelon</td>
+            <td class="unit">R75</td>
+            <td class="qty">{{orders.quantity}}</td>
+            <td class="total">R{{orders.sub_total}}</td>
+          </tr>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL DUE</td>
+            <td>R{{orders.sub_total}}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div id="thanks" style="text-align:center;">
+          {% for message in messages%}
+          {{message}}
+          {% endfor %}
+      </div>
+      <div id="thanks" style="text-align:center;"><a href="/">Thank you!</a></div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+  </body>
+</html>
